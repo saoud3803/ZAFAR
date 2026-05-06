@@ -1,0 +1,70 @@
+import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
+
+const mockProducts = [
+  {
+    id: "prod-1",
+    name: "Structured Leather Tote",
+    price: 850,
+    formatted_price: "$850.00",
+    category: "Accessories",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuAD-u-zHCkHf3jK4Csp6nfyF38ZSJKi3OAZjjVuzW3cNvKYzQHMzITIoYPSB-MTCrwUR-poRYLsp-icl2jTx8lwGXns8wajH2XXkDmiKhi0qEG8EDXRj8r65M8My5-wZMJV2pJNNh9qp7_DiqS0ABCztsqRM5-4C1uc6RLi4Fbo8BhKlQrsHhwluNALkZoqdtUxHnBUcSFmkoF9hhUXxsGsCWLgNav56alCJ2H2IS9nH-M1tAUSvUNqE1xm_x-XvKqT09MBW4-Ia4Q",
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBiX-gH5aZyLbfNusx3r13cwyv_99uvvfBOSyIgYKordHjd0eJmjs0798wQrdlSXM2UO-n2PiUWQoFGYDfczPTDXt1Z9aYWpSnhp_xHY9UEIc762rXDAMTGV8d3NXmCFuxz5jVL6HLvyjJ3tBRtUfosDN6oM_8rE1t3YEq3QjFm8SIyoE0iOyhG7spRHz4Z_3Q-8QITwbZXysWktmQ-3IBPH06XDUBqoYs1tSLEnLExUZ6xceoB7m00NGYFoHUOCEO4gTzgY1_91bY"
+    ],
+    description: "Architectural tote crafted from heavy-grade calfskin. Features reinforced edges and a minimal geometric silhouette.",
+    colors: ["Noir", "Bone"],
+    sizes: ["OS"]
+  },
+  {
+    id: "prod-2",
+    name: "Heavyweight Box Tee",
+    price: 120,
+    formatted_price: "$120.00",
+    category: "T-SHIRTS",
+    images: [
+      "https://lh3.googleusercontent.com/aida-public/AB6AXuBiX-gH5aZyLbfNusx3r13cwyv_99uvvfBOSyIgYKordHjd0eJmjs0798wQrdlSXM2UO-n2PiUWQoFGYDfczPTDXt1Z9aYWpSnhp_xHY9UEIc762rXDAMTGV8d3NXmCFuxz5jVL6HLvyjJ3tBRtUfosDN6oM_8rE1t3YEq3QjFm8SIyoE0iOyhG7spRHz4Z_3Q-8QITwbZXysWktmQ-3IBPH06XDUBqoYs1tSLEnLExUZ6xceoB7m00NGYFoHUOCEO4gTzgY1_91bY"
+    ],
+    description: "The ultimate heavyweight T-shirt with signature Zafar calligraphy.",
+    colors: ["Sand", "Off-White", "Vintage Black"],
+    sizes: ["S", "M", "L", "XL"]
+  }
+];
+
+const mockHeroData = {
+  id: "hero",
+  title1: "Quiet",
+  title2: "riot.",
+  title3: "tailored.",
+  background_image: "/hero-bg.png",
+  metadata_top_left: "FW26 / 2026 — EDITORIAL 04",
+  metadata_top_center: "| NEW DROP • LIVE NOW |",
+  metadata_top_right: "EU • NY • TYO • LDN",
+  side_text_left: "FW26 — VOL. 04 / QUIET RIOT",
+  side_text_right: "LENSED IN MARRAKECH — SPRING 2026",
+  description_chapter: "— CHAPTER FOUR",
+  description_text: "HEAVYWEIGHT KNITS, RAW-EDGE DENIM, AND OBSIDIAN LEATHERS."
+};
+
+export async function GET() {
+  try {
+    // Upsert products
+    const { error: prodError } = await supabase
+      .from('products')
+      .upsert(mockProducts);
+
+    if (prodError) throw prodError;
+
+    // Upsert settings
+    const { error: settingsError } = await supabase
+      .from('settings')
+      .upsert([mockHeroData]);
+
+    if (settingsError) throw settingsError;
+
+    return NextResponse.json({ message: "Supabase database successfully seeded with Products and Hero settings!" });
+  } catch (error: any) {
+    console.error("Error seeding database:", error);
+    return NextResponse.json({ error: error.message || "Failed to seed database" }, { status: 500 });
+  }
+}

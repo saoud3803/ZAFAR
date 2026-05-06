@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZAFAR - High Fashion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#1b1c19",
+                      "on-surface": "#1c1b1b",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#1c1b1b",
+                      "primary-fixed": "#e5e2e1",
+                      "tertiary-container": "#221b09",
+                      "on-background": "#1c1b1b",
+                      "outline": "#747878",
+                      "inverse-surface": "#313030",
+                      "background": "#fdf8f8",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#221b09",
+                      "surface-variant": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#474744",
+                      "on-primary-container": "#858383",
+                      "secondary": "#5e5e5b",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#e1dfdb",
+                      "inverse-primary": "#c9c6c5",
+                      "on-tertiary-fixed-variant": "#504630",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#63635f",
+                      "inverse-on-surface": "#f4f0ef",
+                      "tertiary": "#000000",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#fdf8f8",
+                      "on-primary-fixed-variant": "#474646",
+                      "tertiary-fixed": "#f1e1c4",
+                      "primary-container": "#1c1b1b",
+                      "tertiary-fixed-dim": "#d4c5a9",
+                      "outline-variant": "#c4c7c7",
+                      "primary": "#000000",
+                      "on-surface-variant": "#444748",
+                      "primary-fixed-dim": "#c9c6c5",
+                      "surface-dim": "#ddd9d8",
+                      "secondary-fixed": "#e4e2dd",
+                      "surface-container": "#f1edec",
+                      "on-tertiary-container": "#8f8269",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-high": "#ebe7e6",
+                      "surface-container-low": "#f7f3f2",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fdf8f8",
+                      "secondary-fixed-dim": "#c8c6c2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "margin-edge": "64px",
+                      "section-gap": "160px",
+                      "stack-sm": "12px",
+                      "stack-md": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Noto Serif"
+                      ],
+                      "display-xl": [
+                              "Noto Serif"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Noto Serif"
+                      ],
+                      "ui-mono": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "80px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.15em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+<!-- Announcement Bar -->
+<div class="w-full bg-primary text-on-primary py-2 px-4 text-center overflow-hidden whitespace-nowrap">
+<span class="font-label-caps text-label-caps inline-block">
+            COMPLIMENTARY GLOBAL SHIPPING ON ORDERS OVER $500. EXPLORE THE NEW BRUTALISM COLLECTION.
+        </span>
+</div>
+<!-- TopAppBar -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-2xl border-b-[0.5px] border-zinc-300 transition-all duration-500 ease-in-out mt-8">
+<div class="flex justify-between items-center w-full px-16 h-24">
+<!-- Navigation Links -->
+<div class="flex items-center space-x-8 hidden md:flex">
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-950 border-b-[1px] border-zinc-950 pb-1" href="#">COLLECTIONS</a>
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-400 hover:text-zinc-950 transition-colors duration-500" href="#">EDITORIAL</a>
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-400 hover:text-zinc-950 transition-colors duration-500" href="#">CAMPAIGNS</a>
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-400 hover:text-zinc-950 transition-colors duration-500" href="#">ARCHIVE</a>
+</div>
+<!-- Brand Logo -->
+<div class="absolute left-1/2 transform -translate-x-1/2">
+<a class="font-serif text-3xl font-black tracking-[0.3em] text-zinc-950" href="#">ZAFAR</a>
+</div>
+<!-- Trailing Icons -->
+<div class="flex items-center space-x-6 text-zinc-950">
+<button aria-label="search" class="hover:text-zinc-500 transition-colors duration-500">
+<span class="material-symbols-outlined" data-icon="search">search</span>
+</button>
+<button aria-label="person" class="hover:text-zinc-500 transition-colors duration-500">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+</button>
+<button aria-label="shopping_bag" class="hover:text-zinc-500 transition-colors duration-500">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</button>
+</div>
+<!-- Mobile Menu Toggle -->
+<div class="md:hidden flex items-center">
+<button class="text-zinc-950">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-grow pt-[104px]"> <!-- pt offsets announcement + nav height approx -->
+<!-- Hero Section -->
+<section class="relative w-full h-[870px] overflow-hidden flex items-center justify-center border-b-[0.5px] border-outline-variant">
+<!-- Background Image -->
+<div class="absolute inset-0 z-0 bg-surface-container-highest">
+<img alt="Editorial Hero Image" class="w-full h-full object-cover object-center opacity-90" data-alt="A striking, high-contrast fashion editorial photograph. A model stands in a stark, brutalist concrete environment wearing an avant-garde structural black garment. The lighting is harsh and dramatic, creating deep shadows and highlighting the texture of the fabric and concrete. The overall mood is austere, modern, and fiercely elegant, utilizing a strict monochromatic palette of deep blacks, charcoal grays, and harsh whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMe_17ulDSMYRTHZndqanQldY4Nr7k8-NsFZ08hJcpkQ3VV_QoSMuUthpSv33Z0T2IIxtLTS3y-PvT4yQ5rNb9JiHUrhcEimYurK2_MHmcPjcJUR_xfq4H1lhwDaNS_ZgC4unnrsVpWTzoyXDCN40rbJqEIvjR2tkVkGh2Uy3SuUGqIGYufUjSV7Ba4bOqDsTAin092QpxlcmgXqbw93h7USX84lmuOZardx6CbW1lOCv5X2WpvnpUDlsMhbiIhShmssJ5G4-KuCU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent mix-blend-multiply"></div>
+</div>
+<!-- Content -->
+<div class="relative z-10 flex flex-col items-center text-center px-gutter max-w-container-max mx-auto">
+<h1 class="font-display-xl text-display-xl text-primary mb-stack-md bg-surface-container-lowest/80 backdrop-blur-sm px-8 py-4 border-[0.5px] border-primary">
+                    THE NEW BRUTALISM
+                </h1>
+<div class="flex flex-col sm:flex-row gap-6 mt-8">
+<a class="px-8 py-4 bg-primary text-on-primary font-label-caps text-label-caps border border-primary hover:bg-surface-container-lowest hover:text-primary transition-colors duration-300" href="#">
+                        SHOP COLLECTION
+                    </a>
+<a class="px-8 py-4 bg-transparent text-primary font-label-caps text-label-caps border border-primary hover:bg-surface-container-lowest/50 backdrop-blur-sm transition-colors duration-300" href="#">
+                        VIEW EDITORIAL
+                    </a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full border-t-[0.5px] border-zinc-200 bg-zinc-50 mt-section-gap">
+<div class="grid grid-cols-12 gap-8 px-16 py-20 w-full max-w-container-max mx-auto">
+<!-- Brand -->
+<div class="col-span-12 md:col-span-4 flex flex-col justify-between">
+<span class="font-serif text-xl font-bold tracking-[0.2em] text-zinc-950">ZAFAR</span>
+<span class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 mt-stack-md">
+                    © 2024 ZAFAR. DEFINING THE NEW BRUTALISM.
+                </span>
+</div>
+<!-- Links -->
+<div class="col-span-12 md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
+<div class="flex flex-col space-y-4">
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 hover:text-zinc-950 transition-opacity duration-300 ease-out" href="#">INSTAGRAM</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 hover:text-zinc-950 transition-opacity duration-300 ease-out" href="#">TIKTOK</a>
+</div>
+<div class="flex flex-col space-y-4">
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 hover:text-zinc-950 transition-opacity duration-300 ease-out" href="#">PRIVACY</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 hover:text-zinc-950 transition-opacity duration-300 ease-out" href="#">TERMS</a>
+</div>
+<div class="flex flex-col space-y-4">
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 hover:text-zinc-950 transition-opacity duration-300 ease-out" href="#">SHIPPING</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 hover:text-zinc-950 transition-opacity duration-300 ease-out" href="#">CONTACT</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

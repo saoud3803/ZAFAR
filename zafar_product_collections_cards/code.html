@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZAFAR - Editorial Collection</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#1b1c19",
+                      "on-surface": "#1c1b1b",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#1c1b1b",
+                      "primary-fixed": "#e5e2e1",
+                      "tertiary-container": "#221b09",
+                      "on-background": "#1c1b1b",
+                      "outline": "#747878",
+                      "inverse-surface": "#313030",
+                      "background": "#fdf8f8",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#221b09",
+                      "surface-variant": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#474744",
+                      "on-primary-container": "#858383",
+                      "secondary": "#5e5e5b",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#e1dfdb",
+                      "inverse-primary": "#c9c6c5",
+                      "on-tertiary-fixed-variant": "#504630",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#63635f",
+                      "inverse-on-surface": "#f4f0ef",
+                      "tertiary": "#000000",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#fdf8f8",
+                      "on-primary-fixed-variant": "#474646",
+                      "tertiary-fixed": "#f1e1c4",
+                      "primary-container": "#1c1b1b",
+                      "tertiary-fixed-dim": "#d4c5a9",
+                      "outline-variant": "#c4c7c7",
+                      "primary": "#000000",
+                      "on-surface-variant": "#444748",
+                      "primary-fixed-dim": "#c9c6c5",
+                      "surface-dim": "#ddd9d8",
+                      "secondary-fixed": "#e4e2dd",
+                      "surface-container": "#f1edec",
+                      "on-tertiary-container": "#8f8269",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-high": "#ebe7e6",
+                      "surface-container-low": "#f7f3f2",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fdf8f8",
+                      "secondary-fixed-dim": "#c8c6c2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "margin-edge": "64px",
+                      "section-gap": "160px",
+                      "stack-sm": "12px",
+                      "stack-md": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Noto Serif"
+                      ],
+                      "display-xl": [
+                              "Noto Serif"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Noto Serif"
+                      ],
+                      "ui-mono": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "80px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.15em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen pt-24 pb-20">
+<!-- TopAppBar Component -->
+<header class="bg-white/70 dark:bg-black/70 backdrop-blur-2xl fixed top-0 w-full z-50 border-b-[0.5px] border-zinc-300 dark:border-zinc-800 transition-all duration-500 ease-in-out">
+<div class="flex justify-between items-center w-full px-16 h-24">
+<!-- Navigation Links -->
+<nav class="hidden md:flex items-center gap-8">
+<a class="font-label-caps text-label-caps text-zinc-950 dark:text-zinc-50 border-b-[1px] border-zinc-950 dark:border-zinc-50 pb-1" href="#">COLLECTIONS</a>
+<a class="font-label-caps text-label-caps text-zinc-400 dark:text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-500" href="#">EDITORIAL</a>
+<a class="font-label-caps text-label-caps text-zinc-400 dark:text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-500" href="#">CAMPAIGNS</a>
+<a class="font-label-caps text-label-caps text-zinc-400 dark:text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-500" href="#">ARCHIVE</a>
+</nav>
+<!-- Brand Logo -->
+<a class="font-serif text-3xl font-black tracking-[0.3em] text-zinc-950 dark:text-zinc-50 absolute left-1/2 transform -translate-x-1/2" href="#">
+                ZAFAR
+            </a>
+<!-- Trailing Icon Actions -->
+<div class="flex items-center gap-6 text-zinc-950 dark:text-zinc-50">
+<button class="hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">search</span>
+</button>
+<button class="hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">person</span>
+</button>
+<button class="hover:opacity-70 transition-opacity">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">shopping_bag</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="max-w-[1440px] mx-auto px-margin-edge mt-section-gap">
+<!-- 3. Featured Collection Section: Asymmetrical luxury editorial product grid -->
+<section class="mb-section-gap">
+<div class="mb-stack-md flex justify-between items-end border-b-[1px] border-outline-variant pb-stack-sm">
+<h2 class="font-headline-md text-headline-md text-primary">THE FALL COLLECTION</h2>
+<a class="font-label-caps text-label-caps text-primary hover:text-outline transition-colors" href="#">VIEW ALL</a>
+</div>
+<div class="grid grid-cols-12 gap-gutter items-start">
+<!-- Large Featured Item -->
+<article class="col-span-12 md:col-span-8 group relative overflow-hidden">
+<div class="aspect-[3/4] w-full bg-surface-container relative">
+<img alt="Luxury Fall Coat" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic editorial fashion shot of a tall model wearing an oversized, structured brutalist wool coat in deep charcoal gray. The model stands against a stark, minimalist concrete wall bathed in harsh, high-contrast natural light that casts sharp architectural shadows. The aesthetic is ultra-premium, moody, and austere, perfectly aligning with a luxury brutalism brand identity. The palette is strictly monochromatic with subtle textures of wool and concrete." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA31XvrABFU8VpQgc8jKMNnrxwYmCYIEngjWrrJA3ff56wqcP_IkITDBRzaThloHTt-s5eHzxEeOyPZt0p2EdwlYGSWR0WCi-zUXVrEygIFkAjyDUwc_0rDoghvxmP5y0vhELx9JLwNQdxBXK7jOIs5Ijn9dORemqoxvKP4XFk8bkFqAGOsmTQvmvFeJIMT7zwTeBDggzQbjRW6vO5ynlW-74rl_v3jr7ZXNDhomPoYmj8wLODv9NTqA0os3yAnmRti5Xk4Z06L_Qk"/>
+<!-- Quick Add Overlay -->
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-8 py-4 border-[1px] border-transparent hover:bg-transparent hover:border-on-primary hover:text-on-primary transition-all duration-300">
+                                QUICK ADD
+                            </button>
+</div>
+</div>
+<div class="mt-stack-sm flex justify-between items-start">
+<div>
+<h3 class="font-ui-mono text-ui-mono text-primary font-medium">STRUCTURED WOOL OVERCOAT</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Charcoal / M</p>
+</div>
+<span class="font-ui-mono text-ui-mono text-primary">$1,250</span>
+</div>
+</article>
+<!-- Stacked Smaller Items -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-gutter">
+<!-- Smaller Item 1 -->
+<article class="group relative overflow-hidden">
+<div class="aspect-[3/4] w-full bg-surface-container relative">
+<img alt="Minimalist Silk Shirt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A close-up luxury product shot of a pristine, optic white silk shirt with a sharp, geometric collar. The fabric drapes elegantly, catching subtle highlights from a soft, diffused studio light. The background is a pure, flat off-white ivory tone, creating a high-key, minimalist composition that emphasizes the garment's flawless texture and rigid lines. The mood is quiet, refined, and distinctly modern brutalist." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDA9Cv2U35_K2kY3Sk_Tddhor4qdXQ1qO3Be7kvTJBGUYM5ZAxOKLyHKuCYRCxE1JZefIiQszRYEFToZGYJwbTAqiIbVxxz0lNDmqyhw-5tgyr5Sn210E-7qBSmpwpxLYr_kbMSa6sfEPN-h4dRp9HD32-I_zRdzQyH_qKQWryEn2w8MDLVme66kdUr1WWhdAA3Py4W1wQS4fz-8owdiDmOGWlSFHhwSnCYAEtbXRNRlDfeQXn626KLvfy6xukoMSnZwixb67zZBXQ"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 border-[1px] border-transparent hover:bg-transparent hover:border-on-primary hover:text-on-primary transition-all duration-300">
+                                    QUICK ADD
+                                </button>
+</div>
+</div>
+<div class="mt-stack-sm flex justify-between items-start">
+<div>
+<h3 class="font-ui-mono text-ui-mono text-primary font-medium">GEOMETRIC SILK BLOUSE</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Optic White</p>
+</div>
+<span class="font-ui-mono text-ui-mono text-primary">$450</span>
+</div>
+</article>
+<!-- Smaller Item 2 -->
+<article class="group relative overflow-hidden">
+<div class="aspect-[3/4] w-full bg-surface-container relative">
+<img alt="Leather Trousers" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="An austere, low-angle editorial photograph focusing on a pair of sleek, matte black leather trousers. The model's legs are positioned in a rigid, structural stance against a raw, untreated steel background. The lighting is cold and directional, emphasizing the flawless, unyielding texture of the leather. The overall image projects a sense of industrial luxury and brutalist fashion design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDybsoAJbCltrOrund9_fL8O1yq8jPnZOWhxoz-pDXvYHXtak1M-Vnu0LIQZzZ7OXj3RUEGgJfgTL1mRjKzbsyA_bmhfQo3UBXmpIET5FKrEP89xnHWYBwwLRJjPEhL2-w25AcbIX_54838WJ7Vm3Vpk1b-5kCQsORgsFxKMCWBGINvrLyYjZnK18kDCwgsoc5f3WD1GCx-7qBQKVthfiaCdK_mfTU5l2t7LuwdhwWZZcDkW5gPNvcQId3UQxL4sRmXAL7r3L36tFw"/>
+<div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-sm">
+<button class="bg-primary text-on-primary font-label-caps text-label-caps px-6 py-3 border-[1px] border-transparent hover:bg-transparent hover:border-on-primary hover:text-on-primary transition-all duration-300">
+                                    QUICK ADD
+                                </button>
+</div>
+</div>
+<div class="mt-stack-sm flex justify-between items-start">
+<div>
+<h3 class="font-ui-mono text-ui-mono text-primary font-medium">MATTE LEATHER TROUSER</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Pitch Black</p>
+</div>
+<span class="font-ui-mono text-ui-mono text-primary">$890</span>
+</div>
+</article>
+</div>
+</div>
+</section>
+<!-- 4. Best Sellers Carousel -->
+<section class="mb-section-gap overflow-hidden">
+<div class="mb-stack-md flex justify-between items-end border-b-[1px] border-outline-variant pb-stack-sm">
+<h2 class="font-headline-md text-headline-md text-primary">PERMANENT COLLECTION</h2>
+<div class="flex gap-4">
+<button class="w-10 h-10 border-[1px] border-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<button class="w-10 h-10 border-[1px] border-primary flex items-center justify-center hover:bg-primary hover:text-on-primary transition-colors">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Carousel Track (simulated) -->
+<div class="flex gap-gutter overflow-x-auto snap-x snap-mandatory pb-8 scrollbar-hide" style="scrollbar-width: none;">
+<!-- Product Card (Contextual) - Slide 1 -->
+<article class="min-w-[300px] md:min-w-[400px] flex-shrink-0 snap-start group relative">
+<div class="aspect-[3/4] w-full bg-surface-container relative overflow-hidden">
+<!-- Primary Image -->
+<img alt="Brutalist Silver Ring" class="w-full h-full object-cover transition-opacity duration-500 absolute inset-0 group-hover:opacity-0" data-alt="A stark macro photograph of a heavy, brutalist-style sterling silver ring resting on a slab of rough gray stone. The ring features sharp, architectural geometric facets. The lighting is clinical and bright, highlighting the polished metal against the matte stone texture. The composition is dead-center, emphasizing a minimalist, high-end jewelry aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9c_nrwXajHC8bIidWVvn66oyxKfEin4FXWj-0jV_M5V4hYzAZrpVjrJxbfRW8H5VYTAz1r3g7-D9vhdTNeSstJroDthfEXp-WpxwfjAT5b7-2GSWbNkn5mIq3TTF3WKTNTP_yx4eYL1KrcHZE7oh0__A_vKGuHJkP13V9FJwTBQZrBPgujI4xrx-PKpV8w3CVEdRoY3Yfwdm-rePcfSZ6-YiMSrJEgBvxbwzkdPWQz-b-PCK7aF6aBkjnv19pgXEYUdwjaCNq1Oc"/>
+<!-- Secondary Image (Hover) -->
+<img alt="Silver Ring on Hand" class="w-full h-full object-cover transition-opacity duration-500 absolute inset-0 opacity-0 group-hover:opacity-100" data-alt="An editorial shot of a pale hand wearing a heavy geometric silver ring, resting against a dark charcoal wool coat. The contrast between the cold metal, the warm skin tone, and the dark fabric is striking. The lighting is moody and cinematic, creating a sense of quiet luxury and architectural fashion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCj4GEmSt3Srmmw8ADCpfBcqjoOVgCbqTo_u8pVkDOsMDUY0J83-WzBItE3TaUG7SNP72_0ZbL1mU8Uo537nJg2HogT2AZ708d-aMaY2juT1RhLmECumHwPIqs5UGPiUnKdsCp2cytmVxb_Cn7ztHGsW00R5E-C_7b7ge-opzT-iI9ji5IxV1eXEvN0LcmNzMdW4vghML73Ty4-c1w9pEjCh0uuH2G9dNf3CQZvzZ_lJChy8YRlejRlH3pp5Kd1ozSdgSrBHx-pyOY"/>
+</div>
+<div class="mt-stack-sm">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-ui-mono text-ui-mono text-primary font-medium">MONOLITH RING</h3>
+<span class="font-ui-mono text-ui-mono text-primary">$320</span>
+</div>
+<!-- Quick Select Swatches & Sizes -->
+<div class="flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex gap-2">
+<button class="w-4 h-4 rounded-full bg-zinc-300 border-[1px] border-primary ring-2 ring-transparent hover:ring-primary transition-all"></button>
+<button class="w-4 h-4 rounded-full bg-yellow-600 border-[1px] border-outline-variant ring-2 ring-transparent hover:ring-primary transition-all"></button>
+</div>
+<div class="flex gap-2">
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">7</button>
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">8</button>
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">9</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card (Contextual) - Slide 2 -->
+<article class="min-w-[300px] md:min-w-[400px] flex-shrink-0 snap-start group relative">
+<div class="aspect-[3/4] w-full bg-surface-container relative overflow-hidden">
+<img alt="Canvas Tote Bag" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist product shot of a structured, heavy-duty canvas tote bag in a stark unbleached natural tone. The bag features rigid, straight lines and thick black leather handles. It is positioned perfectly straight against an infinite white background, lit flawlessly to remove any distracting shadows. The image conveys utility, high-end minimalism, and brutalist structural integrity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJsc7gOLRpYT3KIE1WoiGB2F92DjHu-uRhX5dm4rLmzUg-b6l1ftwyvU8rRRicalt-GBNJlHU6fCtovTkfVw_Gg2_SirF22pejgPW3shvUoC_vII7FUMb8Yt31wqxq1WdQmZXpTQBMog53p_TRxie8KqDpktPYd-NgfU5lLYYy61avuazCO01sYcnZNK3wR29eIWQi79SK6Gmc8IoG5YWhzjT2B2w83QQ8ThSBtecb_-L8fpHCOIJBk14ZK4qgifSFxeMIlo_p0m0"/>
+</div>
+<div class="mt-stack-sm">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-ui-mono text-ui-mono text-primary font-medium">STRUCTURAL TOTE</h3>
+<span class="font-ui-mono text-ui-mono text-primary">$550</span>
+</div>
+<div class="flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex gap-2">
+<button class="w-4 h-4 rounded-full bg-stone-200 border-[1px] border-primary ring-2 ring-transparent hover:ring-primary transition-all"></button>
+<button class="w-4 h-4 rounded-full bg-zinc-900 border-[1px] border-outline-variant ring-2 ring-transparent hover:ring-primary transition-all"></button>
+</div>
+<div class="flex gap-2">
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">OS</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card (Contextual) - Slide 3 -->
+<article class="min-w-[300px] md:min-w-[400px] flex-shrink-0 snap-start group relative">
+<div class="aspect-[3/4] w-full bg-surface-container relative overflow-hidden">
+<img alt="Minimalist Sunglasses" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A striking still life of a pair of ultra-modern, thick-framed black acetate sunglasses. The eyewear rests on a highly reflective black glass surface, creating a perfect mirror image. The lighting is a single, sharp spotlight cutting through the darkness, emphasizing the brutalist, blocky geometry of the frames. The mood is slick, dark, and luxuriously intimidating." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCuXO7CTJ9Sg5vKkj9KRBMOz4DS4sbnfUX6kbObUYkluars1_Pmb-GQrC8yIax6l8-jxOQmyujw_fW4FV1vZji68mBDmNR1TFfjNjLFj1kBFPIpSSPwAybigVD7CzduJ6iEHiaZgNW2-aabE0XCNZo21gyXvm-J0HUy6ibbIF6OfVRMUdpnMg7QZjbuxlKibJGUjqLF42zZaAzITs3NgYUNJI_gbUOYxC-FOwEgXvjOkC9BHbrp1V-r_cXuy5Y2kxx-OLnTABSVu_Y"/>
+</div>
+<div class="mt-stack-sm">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-ui-mono text-ui-mono text-primary font-medium">VOID SUNGLASSES</h3>
+<span class="font-ui-mono text-ui-mono text-primary">$410</span>
+</div>
+<div class="flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex gap-2">
+<button class="w-4 h-4 rounded-full bg-zinc-950 border-[1px] border-primary ring-2 ring-transparent hover:ring-primary transition-all"></button>
+</div>
+<div class="flex gap-2">
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">OS</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Product Card (Contextual) - Slide 4 -->
+<article class="min-w-[300px] md:min-w-[400px] flex-shrink-0 snap-start group relative">
+<div class="aspect-[3/4] w-full bg-surface-container relative overflow-hidden">
+<img alt="Basic White Tee" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist editorial shot of a heavy-weight, boxy white t-shirt hanging straight down against a raw concrete wall. The garment is perfectly pressed, showing no wrinkles, emphasizing its rigid, architectural cut. The lighting is flat and neutral, capturing the subtle texture of the premium cotton and the stark, brutalist environment. The image is devoid of human presence, focusing solely on the object's form." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfId9nYxdL44PbFU2Cr-2DDnvO6D8goGIJ48wu-5qC7URIwIloyjIWRjKgTGcpgRSNbBCpvjgqK_hTdQSXCwibrs78cEi3V90V1QcUaskJ9eXl3FWe4Qj8IBL6yEL7jvABuLfZ3aCJwXXqYrxFzijt7VFdfjIpnUgq87n50zE5tk3spNcLHDbySrq8VJZhavflUrl70maRxVjCbMslfVaADCqMYaTA7qbKJz2JRj8qpGU-Ya9qgXXcdAubrEiB6FlnaVQmFxoCg-M"/>
+</div>
+<div class="mt-stack-sm">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-ui-mono text-ui-mono text-primary font-medium">HEAVYWEIGHT BOXY TEE</h3>
+<span class="font-ui-mono text-ui-mono text-primary">$180</span>
+</div>
+<div class="flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<div class="flex gap-2">
+<button class="w-4 h-4 rounded-full bg-white border-[1px] border-primary ring-2 ring-transparent hover:ring-primary transition-all"></button>
+<button class="w-4 h-4 rounded-full bg-zinc-900 border-[1px] border-outline-variant ring-2 ring-transparent hover:ring-primary transition-all"></button>
+</div>
+<div class="flex gap-2">
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">S</button>
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">M</button>
+<button class="font-label-caps text-[10px] border-[1px] border-outline-variant px-2 py-1 hover:border-primary hover:bg-primary hover:text-on-primary transition-colors">L</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Progress Bar Indicator -->
+<div class="w-full h-[2px] bg-surface-container-high mt-8 relative">
+<div class="absolute left-0 top-0 h-full w-1/3 bg-primary transition-all duration-500 ease-out"></div>
+</div>
+</section>
+</main>
+<!-- Footer Component -->
+<footer class="bg-zinc-50 dark:bg-zinc-950 w-full border-t-[0.5px] border-zinc-200 dark:border-zinc-800 border-t-[0.5px] border-zinc-300 dark:border-zinc-700 ease-out duration-300 mt-section-gap">
+<div class="grid grid-cols-12 gap-8 px-16 py-20 w-full max-w-[1440px] mx-auto">
+<!-- Brand & Copyright -->
+<div class="col-span-12 md:col-span-6 flex flex-col justify-between">
+<div class="font-serif text-xl font-bold tracking-[0.2em] text-zinc-950 dark:text-zinc-50 mb-8">
+                    ZAFAR
+                </div>
+<div class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400">
+                    © 2024 ZAFAR. DEFINING THE NEW BRUTALISM.
+                </div>
+</div>
+<!-- Links -->
+<div class="col-span-12 md:col-span-6 flex flex-wrap gap-x-12 gap-y-4 md:justify-end items-end">
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300" href="#">INSTAGRAM</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300" href="#">TIKTOK</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300" href="#">PRIVACY</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300" href="#">TERMS</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300" href="#">SHIPPING</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300" href="#">CONTACT</a>
+</div>
+</div>
+</footer>
+</body></html>

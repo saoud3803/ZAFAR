@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZAFAR - Product Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Noto+Serif:wght@400;700;900&amp;family=Space+Grotesk:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface-container-lowest": "#ffffff",
+                            "on-secondary-fixed": "#1b1c19",
+                            "on-surface": "#1c1b1b",
+                            "error": "#ba1a1a",
+                            "on-primary": "#ffffff",
+                            "on-primary-fixed": "#1c1b1b",
+                            "primary-fixed": "#e5e2e1",
+                            "tertiary-container": "#221b09",
+                            "on-background": "#1c1b1b",
+                            "outline": "#747878",
+                            "inverse-surface": "#313030",
+                            "background": "#fdf8f8",
+                            "error-container": "#ffdad6",
+                            "on-tertiary-fixed": "#221b09",
+                            "surface-variant": "#e5e2e1",
+                            "on-secondary-fixed-variant": "#474744",
+                            "on-primary-container": "#858383",
+                            "secondary": "#5e5e5b",
+                            "on-tertiary": "#ffffff",
+                            "on-error": "#ffffff",
+                            "secondary-container": "#e1dfdb",
+                            "inverse-primary": "#c9c6c5",
+                            "on-tertiary-fixed-variant": "#504630",
+                            "on-error-container": "#93000a",
+                            "on-secondary-container": "#63635f",
+                            "inverse-on-surface": "#f4f0ef",
+                            "tertiary": "#000000",
+                            "on-secondary": "#ffffff",
+                            "surface-bright": "#fdf8f8",
+                            "on-primary-fixed-variant": "#474646",
+                            "tertiary-fixed": "#f1e1c4",
+                            "primary-container": "#1c1b1b",
+                            "tertiary-fixed-dim": "#d4c5a9",
+                            "outline-variant": "#c4c7c7",
+                            "primary": "#000000",
+                            "on-surface-variant": "#444748",
+                            "primary-fixed-dim": "#c9c6c5",
+                            "surface-dim": "#ddd9d8",
+                            "secondary-fixed": "#e4e2dd",
+                            "surface-container": "#f1edec",
+                            "on-tertiary-container": "#8f8269",
+                            "surface-tint": "#5f5e5e",
+                            "surface-container-high": "#ebe7e6",
+                            "surface-container-low": "#f7f3f2",
+                            "surface-container-highest": "#e5e2e1",
+                            "surface": "#fdf8f8",
+                            "secondary-fixed-dim": "#c8c6c2"
+                    },
+                    "borderRadius": {
+                            "DEFAULT": "0.25rem",
+                            "lg": "0.5rem",
+                            "xl": "0.75rem",
+                            "full": "9999px"
+                    },
+                    "spacing": {
+                            "unit": "4px",
+                            "container-max": "1440px",
+                            "gutter": "24px",
+                            "margin-edge": "64px",
+                            "section-gap": "160px",
+                            "stack-sm": "12px",
+                            "stack-md": "32px"
+                    },
+                    "fontFamily": {
+                            "headline-md": [
+                                    "Noto Serif"
+                            ],
+                            "display-xl": [
+                                    "Noto Serif"
+                            ],
+                            "body-lg": [
+                                    "Inter"
+                            ],
+                            "headline-lg": [
+                                    "Noto Serif"
+                            ],
+                            "ui-mono": [
+                                    "Space Grotesk"
+                            ],
+                            "body-md": [
+                                    "Inter"
+                            ],
+                            "label-caps": [
+                                    "Space Grotesk"
+                            ]
+                    },
+                    "fontSize": {
+                            "headline-md": [
+                                    "32px",
+                                    {
+                                            "lineHeight": "1.2",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "display-xl": [
+                                    "80px",
+                                    {
+                                            "lineHeight": "1.0",
+                                            "letterSpacing": "-0.02em",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "body-lg": [
+                                    "18px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "letterSpacing": "0.01em",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "headline-lg": [
+                                    "48px",
+                                    {
+                                            "lineHeight": "1.1",
+                                            "letterSpacing": "-0.01em",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "ui-mono": [
+                                    "13px",
+                                    {
+                                            "lineHeight": "1.4",
+                                            "letterSpacing": "0.02em",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "body-md": [
+                                    "16px",
+                                    {
+                                            "lineHeight": "1.6",
+                                            "fontWeight": "400"
+                                    }
+                            ],
+                            "label-caps": [
+                                    "12px",
+                                    {
+                                            "lineHeight": "1.0",
+                                            "letterSpacing": "0.15em",
+                                            "fontWeight": "500"
+                                    }
+                            ]
+                    }
+            },
+                },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased pt-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-black/70 backdrop-blur-2xl border-b-[0.5px] border-zinc-300 dark:border-zinc-800 transition-all duration-500 ease-in-out">
+<div class="flex justify-between items-center w-full px-16 h-24">
+<!-- Navigation Links (Left) -->
+<nav class="hidden md:flex space-x-8">
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-950 dark:text-zinc-50 border-b-[1px] border-zinc-950 dark:border-zinc-50 pb-1 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-500" href="#">COLLECTIONS</a>
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-400 dark:text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-500" href="#">EDITORIAL</a>
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-400 dark:text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-500" href="#">CAMPAIGNS</a>
+<a class="font-serif tracking-[0.1em] uppercase text-[11px] font-medium text-zinc-400 dark:text-zinc-500 hover:text-zinc-950 dark:hover:text-zinc-50 transition-colors duration-500" href="#">ARCHIVE</a>
+</nav>
+<!-- Brand Logo (Center) -->
+<div class="absolute left-1/2 transform -translate-x-1/2">
+<a class="font-serif text-3xl font-black tracking-[0.3em] text-zinc-950 dark:text-zinc-50" href="#">ZAFAR</a>
+</div>
+<!-- Trailing Icons (Right) -->
+<div class="flex space-x-6 items-center text-zinc-950 dark:text-zinc-50">
+<button aria-label="Search" class="hover:text-zinc-500 transition-colors">
+<span class="material-symbols-outlined font-light text-[20px]">search</span>
+</button>
+<button aria-label="Profile" class="hover:text-zinc-500 transition-colors">
+<span class="material-symbols-outlined font-light text-[20px]">person</span>
+</button>
+<button aria-label="Cart" class="hover:text-zinc-500 transition-colors">
+<span class="material-symbols-outlined font-light text-[20px]">shopping_bag</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content: Product Details Page -->
+<main class="max-w-container-max mx-auto px-margin-edge pb-section-gap flex flex-col md:flex-row gap-gutter pt-8">
+<!-- Left: Image Gallery (Scrollable) -->
+<div class="w-full md:w-2/3 flex flex-col space-y-4">
+<div class="w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img alt="Product Image 1" class="w-full h-full object-cover" data-alt="A striking editorial fashion photograph of a structured, brutalist-inspired black trench coat draped over a minimalist concrete pedestal. The coat features sharp geometric lapels and hidden hardware. The setting is a stark, bright, gallery-like space illuminated by high-key, cold white lighting, creating deep, razor-sharp shadows. The mood is austere, powerful, and exclusive, emphasizing high-contrast monochromatic luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXcWffEpM19HwDGMOJPoFZ_T17Do3kGfJLvoKXygwD45VL24in5986OPbSyZdwLBJEyz-5ZJhM7Y52n6opJbKLy3umpH3hT36sYWpVRZct0D8a14AmERQil7B_upBGbws_OUiTXdwqDehXwA3kcDyKpEBUv4hJk-Eyafk2RDGin79_sIGgPYHm8XsJ_vyYafRWfiqd5IJm7lBHLGUzhepRot7q2fQ0AsOAdIgNobkwPeeM5zsIBD1BrirY9At6IaFCRJbN81ZFAos"/>
+</div>
+<div class="w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img alt="Product Detail 1" class="w-full h-full object-cover" data-alt="Close up detail shot of thick, structured black wool fabric on a high-end garment. The focus is on a meticulously crafted, concealed seam and a singular, brutalist matte black metal button. The lighting is directional and harsh, highlighting the tactile texture of the fabric against the stark, smooth hardware. The aesthetic is strictly monochromatic, minimal, and architectural." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3Sz59h0D75xkqsbp8YhBWUBrgVxJHIMXglZWDqppkBuNIOymrUOXDt5rcCk-CJw_l96wqDVDazc7burFwUYaF-SZRjn82_berI7OA3yJQ9F8o2zP0hfJUVARTngQP1CyM0ZA2YINnml6EgpDRCi_vWVEjEXEzQ3fKYCmZXorFrOW7fnJXsHEZOeoL5XCp3TaWdkiiTAM3jA2LwkKtSGUTQThcRCSxjqpQ0S2Ge17ZW7Ssy2STvc48AyXorzPxfKftXDtHSQCmcLo"/>
+</div>
+<div class="w-full aspect-[3/4] bg-surface-container overflow-hidden">
+<img alt="Product Look 1" class="w-full h-full object-cover" data-alt="A cinematic, wide-angle shot of a model wearing an oversized, structured black coat walking away down a stark, concrete corridor. The model's silhouette is sharp and imposing against the pale gray walls. The lighting is diffused from above, casting long, dramatic shadows. The mood conveys modern brutalism, luxury, and silent authority within a minimalist architectural environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDgYxQUfXyAW9Op1PPlbsoJVnT8sUi9pYicbesLzVfhjGlx-7wNpVZuOMq9tEK35QW_pIQu-MEGcj-jVNo_ILCF4bUxmL1TOtT4Wez79h6fdie0GBKMO0QdXrmqMTLg886l9XTEy9iTA7M2Rwtk9PMe3QcDgnh-MRKeIxpGM2uPwhuIzUnUZIYCC2oTIRk1V2F34S4dY4c0Ldz3MEoZajleWCN-JhkugNF2e4FC4B-s4CRXVJsz3kNF_dd5qZGiJj9yZJATUX9HkrA"/>
+</div>
+</div>
+<!-- Right: Sticky Info Panel -->
+<div class="w-full md:w-1/3 relative">
+<div class="sticky top-[120px] flex flex-col pt-8">
+<!-- Product Header -->
+<div class="mb-stack-md border-b-[0.5px] border-outline-variant pb-8">
+<h1 class="font-headline-md text-headline-md text-on-surface mb-2 uppercase tracking-tight">Obsidian Structura Coat</h1>
+<p class="font-ui-mono text-ui-mono text-on-surface-variant">$1,850 USD</p>
+</div>
+<!-- Color Variant Selector -->
+<div class="mb-stack-md">
+<span class="block font-label-caps text-label-caps text-on-surface mb-4">COLOR: VOID BLACK</span>
+<div class="flex space-x-3">
+<button aria-label="Void Black" class="w-8 h-8 rounded-full bg-primary border border-outline ring-1 ring-offset-2 ring-primary"></button>
+<button aria-label="Concrete Grey" class="w-8 h-8 rounded-full bg-surface-container-highest border border-outline-variant"></button>
+</div>
+</div>
+<!-- Size Selector -->
+<div class="mb-stack-md">
+<div class="flex justify-between items-center mb-4">
+<span class="block font-label-caps text-label-caps text-on-surface">SIZE</span>
+<a class="font-ui-mono text-ui-mono text-on-surface-variant underline decoration-[0.5px] underline-offset-4 hover:text-on-surface transition-colors" href="#">SIZE GUIDE</a>
+</div>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-3 border-[0.5px] border-outline-variant text-center font-ui-mono text-ui-mono text-on-surface hover:border-on-surface transition-colors">46</button>
+<button class="py-3 border-[0.5px] border-outline-variant text-center font-ui-mono text-ui-mono text-on-surface hover:border-on-surface transition-colors">48</button>
+<button class="py-3 border-[0.5px] border-on-surface bg-surface-container-highest text-center font-ui-mono text-ui-mono text-on-surface font-bold">50</button>
+<button class="py-3 border-[0.5px] border-outline-variant text-center font-ui-mono text-ui-mono text-on-surface hover:border-on-surface transition-colors">52</button>
+<button class="py-3 border-[0.5px] border-outline-variant text-center font-ui-mono text-ui-mono text-on-surface hover:border-on-surface transition-colors">54</button>
+</div>
+</div>
+<!-- Add to Bag Action -->
+<div class="mb-stack-md">
+<button class="w-full bg-primary text-on-primary py-5 font-label-caps text-label-caps hover:bg-inverse-surface transition-colors duration-300">ADD TO BAG</button>
+</div>
+<!-- Accordion Details -->
+<div class="border-t-[0.5px] border-outline-variant">
+<!-- Details -->
+<details class="group border-b-[0.5px] border-outline-variant" open="">
+<summary class="flex justify-between items-center py-5 cursor-pointer list-none">
+<span class="font-label-caps text-label-caps text-on-surface">DETAILS</span>
+<span class="material-symbols-outlined transition duration-300 group-open:rotate-180 text-on-surface-variant">expand_more</span>
+</summary>
+<div class="pb-5 font-body-md text-body-md text-on-surface-variant">
+<p>Constructed from heavyweight bonded Italian wool, the Obsidian Structura Coat embodies rigid minimalism. Featuring concealed magnetic closures, laser-cut unhemmed edges, and an exaggerated, sharp shoulder silhouette. Designed to drape with architectural precision.</p>
+<ul class="list-disc pl-5 mt-4 space-y-2">
+<li>100% Virgin Wool</li>
+<li>Cupro lining</li>
+<li>Concealed seam pockets</li>
+<li>Made in Italy</li>
+</ul>
+</div>
+</details>
+<!-- Shipping -->
+<details class="group border-b-[0.5px] border-outline-variant">
+<summary class="flex justify-between items-center py-5 cursor-pointer list-none">
+<span class="font-label-caps text-label-caps text-on-surface">SHIPPING</span>
+<span class="material-symbols-outlined transition duration-300 group-open:rotate-180 text-on-surface-variant">expand_more</span>
+</summary>
+<div class="pb-5 font-body-md text-body-md text-on-surface-variant">
+<p>Complimentary express shipping on all orders globally. Items are dispatched within 24 hours in our signature rigid matte black packaging.</p>
+</div>
+</details>
+<!-- Care -->
+<details class="group border-b-[0.5px] border-outline-variant">
+<summary class="flex justify-between items-center py-5 cursor-pointer list-none">
+<span class="font-label-caps text-label-caps text-on-surface">CARE</span>
+<span class="material-symbols-outlined transition duration-300 group-open:rotate-180 text-on-surface-variant">expand_more</span>
+</summary>
+<div class="pb-5 font-body-md text-body-md text-on-surface-variant">
+<p>Dry clean only. Do not iron. Store on a contoured hanger to maintain structural integrity.</p>
+</div>
+</details>
+</div>
+<!-- Trust Badges -->
+<div class="mt-8 flex items-center justify-start space-x-6 text-on-surface-variant">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined font-light">verified_user</span>
+<span class="font-ui-mono text-[10px] uppercase tracking-widest">Secure Checkout</span>
+</div>
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined font-light">diamond</span>
+<span class="font-ui-mono text-[10px] uppercase tracking-widest">Authentic</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-50 dark:bg-zinc-950 w-full border-t-[0.5px] border-zinc-200 dark:border-zinc-800">
+<div class="border-t-[0.5px] border-zinc-300 dark:border-zinc-700"></div>
+<div class="grid grid-cols-12 gap-8 px-16 py-20 w-full">
+<div class="col-span-12 md:col-span-4 flex flex-col space-y-4">
+<span class="font-serif text-xl font-bold tracking-[0.2em] text-zinc-950 dark:text-zinc-50">ZAFAR</span>
+<p class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400">© 2024 ZAFAR. DEFINING THE NEW BRUTALISM.</p>
+</div>
+<div class="col-span-12 md:col-span-8 flex justify-end space-x-8">
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300 ease-out" href="#">INSTAGRAM</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300 ease-out" href="#">TIKTOK</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300 ease-out" href="#">PRIVACY</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300 ease-out" href="#">TERMS</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300 ease-out" href="#">SHIPPING</a>
+<a class="font-serif tracking-widest uppercase text-[10px] text-zinc-500 dark:text-zinc-400 hover:text-zinc-950 dark:hover:text-zinc-50 transition-opacity duration-300 ease-out" href="#">CONTACT</a>
+</div>
+</div>
+</footer>
+</body></html>

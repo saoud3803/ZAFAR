@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ZAFAR - Checkout</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700;900&amp;family=Inter:wght@400;500;600&amp;family=Space+Grotesk:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#1b1c19",
+                      "on-surface": "#1c1b1b",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "on-primary-fixed": "#1c1b1b",
+                      "primary-fixed": "#e5e2e1",
+                      "tertiary-container": "#221b09",
+                      "on-background": "#1c1b1b",
+                      "outline": "#747878",
+                      "inverse-surface": "#313030",
+                      "background": "#fdf8f8",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#221b09",
+                      "surface-variant": "#e5e2e1",
+                      "on-secondary-fixed-variant": "#474744",
+                      "on-primary-container": "#858383",
+                      "secondary": "#5e5e5b",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "secondary-container": "#e1dfdb",
+                      "inverse-primary": "#c9c6c5",
+                      "on-tertiary-fixed-variant": "#504630",
+                      "on-error-container": "#93000a",
+                      "on-secondary-container": "#63635f",
+                      "inverse-on-surface": "#f4f0ef",
+                      "tertiary": "#000000",
+                      "on-secondary": "#ffffff",
+                      "surface-bright": "#fdf8f8",
+                      "on-primary-fixed-variant": "#474646",
+                      "tertiary-fixed": "#f1e1c4",
+                      "primary-container": "#1c1b1b",
+                      "tertiary-fixed-dim": "#d4c5a9",
+                      "outline-variant": "#c4c7c7",
+                      "primary": "#000000",
+                      "on-surface-variant": "#444748",
+                      "primary-fixed-dim": "#c9c6c5",
+                      "surface-dim": "#ddd9d8",
+                      "secondary-fixed": "#e4e2dd",
+                      "surface-container": "#f1edec",
+                      "on-tertiary-container": "#8f8269",
+                      "surface-tint": "#5f5e5e",
+                      "surface-container-high": "#ebe7e6",
+                      "surface-container-low": "#f7f3f2",
+                      "surface-container-highest": "#e5e2e1",
+                      "surface": "#fdf8f8",
+                      "secondary-fixed-dim": "#c8c6c2"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "container-max": "1440px",
+                      "gutter": "24px",
+                      "margin-edge": "64px",
+                      "section-gap": "160px",
+                      "stack-sm": "12px",
+                      "stack-md": "32px"
+              },
+              "fontFamily": {
+                      "headline-md": [
+                              "Noto Serif"
+                      ],
+                      "display-xl": [
+                              "Noto Serif"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Noto Serif"
+                      ],
+                      "ui-mono": [
+                              "Space Grotesk"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-md": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-xl": [
+                              "80px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "letterSpacing": "0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-lg": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "ui-mono": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-caps": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.0",
+                                      "letterSpacing": "0.15em",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen font-body-md text-body-md flex flex-col">
+<!-- TopAppBar Suppressed as per rule: Linear/Transactional intent (Checkout) -->
+<main class="flex-grow flex flex-col md:flex-row relative">
+<!-- Main Area: Checkout Flow -->
+<section class="flex-1 w-full max-w-[800px] mx-auto px-margin-edge py-section-gap">
+<div class="mb-stack-md">
+<a class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 hover:text-on-surface transition-colors duration-300 w-fit" href="#">
+<span class="material-symbols-outlined" style="font-size: 16px;">arrow_back</span>
+                    RETURN TO CART
+                </a>
+</div>
+<h1 class="font-headline-lg text-headline-lg mb-12">Checkout</h1>
+<form class="space-y-16">
+<!-- Contact Information -->
+<div class="space-y-6">
+<h2 class="font-headline-md text-headline-md border-b-[0.5px] border-outline-variant pb-4">Contact</h2>
+<div class="space-y-4">
+<div>
+<label class="sr-only" for="email">Email</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="email" placeholder="Email Address" type="email"/>
+</div>
+<div class="flex items-center gap-3 pt-2">
+<input class="appearance-none w-4 h-4 border-[1px] border-outline-variant checked:bg-primary checked:border-primary focus:ring-0 cursor-pointer relative after:content-[''] after:absolute after:hidden checked:after:block after:w-1.5 after:h-2.5 after:border-r-2 after:border-b-2 after:border-on-primary after:rotate-45 after:left-[5px] after:top-[1px]" id="newsletter" type="checkbox"/>
+<label class="font-body-md text-body-md text-on-surface-variant cursor-pointer" for="newsletter">Email me with news and offers</label>
+</div>
+</div>
+</div>
+<!-- Shipping Address -->
+<div class="space-y-6">
+<h2 class="font-headline-md text-headline-md border-b-[0.5px] border-outline-variant pb-4">Shipping</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="md:col-span-2">
+<label class="sr-only" for="country">Country/Region</label>
+<select class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono text-on-surface transition-colors duration-300 appearance-none" id="country">
+<option value="US">United States</option>
+<option value="UK">United Kingdom</option>
+<option value="CA">Canada</option>
+</select>
+</div>
+<div>
+<label class="sr-only" for="first-name">First name</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="first-name" placeholder="First name" type="text"/>
+</div>
+<div>
+<label class="sr-only" for="last-name">Last name</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="last-name" placeholder="Last name" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="sr-only" for="address">Address</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="address" placeholder="Address" type="text"/>
+</div>
+<div class="md:col-span-2">
+<label class="sr-only" for="apartment">Apartment, suite, etc. (optional)</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="apartment" placeholder="Apartment, suite, etc. (optional)" type="text"/>
+</div>
+<div class="grid grid-cols-3 gap-4 md:col-span-2">
+<div class="col-span-1">
+<label class="sr-only" for="city">City</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="city" placeholder="City" type="text"/>
+</div>
+<div class="col-span-1">
+<label class="sr-only" for="state">State</label>
+<select class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono text-on-surface transition-colors duration-300 appearance-none" id="state">
+<option disabled="" selected="" value="">State</option>
+<option value="NY">New York</option>
+<option value="CA">California</option>
+</select>
+</div>
+<div class="col-span-1">
+<label class="sr-only" for="zip">ZIP code</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="zip" placeholder="ZIP code" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Payment -->
+<div class="space-y-6">
+<h2 class="font-headline-md text-headline-md border-b-[0.5px] border-outline-variant pb-4">Payment</h2>
+<p class="font-ui-mono text-ui-mono text-on-surface-variant">All transactions are secure and encrypted.</p>
+<div class="border-[1px] border-outline-variant p-6 space-y-4">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<input checked="" class="appearance-none w-4 h-4 border-[1px] border-outline-variant rounded-full checked:border-[4px] checked:border-on-surface focus:ring-0 cursor-pointer" id="credit-card" name="payment" type="radio"/>
+<label class="font-body-md text-body-md text-on-surface cursor-pointer" for="credit-card">Credit Card</label>
+</div>
+</div>
+<div class="space-y-4 pt-4 border-t-[0.5px] border-outline-variant">
+<div>
+<label class="sr-only" for="card-number">Card number</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="card-number" placeholder="Card number" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div>
+<label class="sr-only" for="expiration">Expiration date (MM / YY)</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="expiration" placeholder="Expiration date (MM / YY)" type="text"/>
+</div>
+<div>
+<label class="sr-only" for="security-code">Security code</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="security-code" placeholder="Security code" type="text"/>
+</div>
+</div>
+<div>
+<label class="sr-only" for="name-on-card">Name on card</label>
+<input class="w-full bg-transparent border-b-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-0 py-4 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" id="name-on-card" placeholder="Name on card" type="text"/>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-8">
+<button class="w-full bg-tertiary text-on-tertiary py-6 font-label-caps text-label-caps hover:bg-surface hover:text-tertiary border-[1px] border-transparent hover:border-tertiary transition-all duration-300" type="button">
+                        PAY NOW
+                    </button>
+</div>
+</form>
+</section>
+<!-- Right Sidebar: Order Summary -->
+<aside class="w-full md:w-[450px] bg-surface-container-low border-l-[0.5px] border-outline-variant md:min-h-screen sticky top-0 md:h-screen overflow-y-auto hidden lg:block">
+<div class="p-margin-edge space-y-12">
+<h3 class="font-headline-md text-headline-md border-b-[0.5px] border-outline-variant pb-4">Order Summary</h3>
+<div class="space-y-8">
+<!-- Line Item 1 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-32 relative bg-surface-dim overflow-hidden flex-shrink-0">
+<img alt="A high-fashion product shot of a brutalist, angular black leather handbag against a stark white background. The lighting is harsh and direct, casting sharp shadows that emphasize the bag's rigid, architectural structure. The aesthetic is clean, minimalist, and ultra-premium." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A high-fashion product shot of a brutalist, angular black leather handbag against a stark white background. The lighting is harsh and direct, casting sharp shadows that emphasize the bag's rigid, architectural structure. The aesthetic is clean, minimalist, and ultra-premium." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAD-u-zHCkHf3jK4Csp6nfyF38ZSJKi3OAZjjVuzW3cNvKYzQHMzITIoYPSB-MTCrwUR-poRYLsp-icl2jTx8lwGXns8wajH2XXkDmiKhi0qEG8EDXRj8r65M8My5-wZMJV2pJNNh9qp7_DiqS0ABCztsqRM5-4C1uc6RLi4Fbo8BhKlQrsHhwluNALkZoqdtUxHnBUcSFmkoF9hhUXxsGsCWLgNav56alCJ2H2IS9nH-M1tAUSvUNqE1xm_x-XvKqT09MBW4-Ia4Q"/>
+<span class="absolute top-0 right-0 bg-tertiary text-on-tertiary w-6 h-6 flex items-center justify-center font-ui-mono text-[10px] m-1 rounded-full">1</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-body-md text-body-md font-medium text-on-surface">Structured Leather Tote</h4>
+<p class="font-ui-mono text-ui-mono text-on-surface-variant mt-1">Noir / OS</p>
+</div>
+<div class="font-ui-mono text-ui-mono text-on-surface">$850.00</div>
+</div>
+</div>
+<!-- Line Item 2 -->
+<div class="flex gap-6 group">
+<div class="w-24 h-32 relative bg-surface-dim overflow-hidden flex-shrink-0">
+<img alt="A close-up fashion editorial shot of a heavy, brutalist silver chain necklace resting on rough concrete. The lighting is cold and cinematic, creating high contrast between the polished metal and the textured stone. The mood is raw, austere, and luxurious." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A close-up fashion editorial shot of a heavy, brutalist silver chain necklace resting on rough concrete. The lighting is cold and cinematic, creating high contrast between the polished metal and the textured stone. The mood is raw, austere, and luxurious." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCQCsuKGpeRBk09WY1DjaLKjnq3q8OHzXVKlR26331NGneNtKn-kyMjuJ0WzpAZs9WVKWghlCPwN6haiXhQz5K_21Y6BiqZoTgETLDNlpNoHM5511K4IDg2y90rKWLFr_Sojd9zXFFKhsBPBbRGyvY-Sv8zRteIYYPDc863Szf44_CkZVYMTccWiDPglPhkQV0rOgdixGbi6Jl0VvlpvdVKyBvfzOQthWqqdfgxbNAo7_-XZIpNNNThDSkBkYBRaydjgMu2pOPumaI"/>
+<span class="absolute top-0 right-0 bg-tertiary text-on-tertiary w-6 h-6 flex items-center justify-center font-ui-mono text-[10px] m-1 rounded-full">1</span>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<h4 class="font-body-md text-body-md font-medium text-on-surface">Industrial Chain Link</h4>
+<p class="font-ui-mono text-ui-mono text-on-surface-variant mt-1">Silver / OS</p>
+</div>
+<div class="font-ui-mono text-ui-mono text-on-surface">$420.00</div>
+</div>
+</div>
+</div>
+<!-- Coupon Input -->
+<div class="flex gap-4 pt-8 border-t-[0.5px] border-outline-variant">
+<input class="flex-1 bg-transparent border-[1px] border-outline-variant focus:border-on-surface focus:ring-0 px-4 py-3 font-ui-mono text-ui-mono placeholder:text-outline transition-colors duration-300" placeholder="Gift card or discount code" type="text"/>
+<button class="bg-surface-dim text-on-surface px-6 py-3 font-label-caps text-label-caps hover:bg-on-surface hover:text-surface transition-colors duration-300" type="button">APPLY</button>
+</div>
+<!-- Totals -->
+<div class="space-y-4 pt-8 border-t-[0.5px] border-outline-variant font-ui-mono text-ui-mono">
+<div class="flex justify-between text-on-surface-variant">
+<span>Subtotal</span>
+<span>$1,270.00</span>
+</div>
+<div class="flex justify-between text-on-surface-variant">
+<span>Shipping</span>
+<span>Calculated at next step</span>
+</div>
+<div class="flex justify-between text-on-surface font-medium pt-4 border-t-[0.5px] border-outline-variant text-body-lg">
+<span>Total</span>
+<span>USD $1,270.00</span>
+</div>
+</div>
+</div>
+</aside>
+</main>
+<!-- Footer Suppressed as per rule: Linear/Transactional intent (Checkout) -->
+</body></html>
