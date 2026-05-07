@@ -33,21 +33,19 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
-      {/* Logo */}
-      <div className={`flex items-center gap-3 px-5 py-5 border-b border-gray-100 ${collapsed ? 'justify-center' : ''}`}>
-        <div className="w-9 h-9 bg-zinc-900 rounded-lg flex items-center justify-center flex-shrink-0">
-          <span className="font-mono text-white text-xs font-black tracking-wider">ZF</span>
+      <div className={`flex items-center gap-3 px-4 py-5 ${collapsed ? 'justify-center' : ''}`}>
+        <div className="w-9 h-9 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-[10px] flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-500/30">
+          <span className="font-bold text-white text-xs tracking-wider">ZF</span>
         </div>
         {!collapsed && (
           <div>
-            <p className="font-mono text-zinc-900 text-sm font-bold tracking-[0.2em]">ZAFAR</p>
-            <p className="font-mono text-gray-400 text-[9px] tracking-widest">ADMIN PANEL</p>
+            <p className="text-[#1d1d1f] text-[13px] font-semibold tracking-tight">Zafar Admin</p>
+            <p className="text-[#6e6e73] text-[10px]">Panel de contrôle</p>
           </div>
         )}
       </div>
 
-      {/* Nav */}
-      <nav className="flex-1 px-3 py-5 space-y-1">
+      <nav className="flex-1 px-2 py-2 space-y-0.5">
         {navItems.map((item) => {
           const isActive = pathname === item.href || (item.href !== '/admin' && pathname.startsWith(item.href));
           return (
@@ -56,67 +54,66 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               href={item.href}
               onClick={() => setMobileOpen(false)}
               title={collapsed ? item.label : undefined}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all duration-200 ${collapsed ? 'justify-center' : ''} ${
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] transition-all duration-200 ${collapsed ? 'justify-center' : ''} ${
                 isActive
-                  ? 'bg-zinc-900 text-white font-semibold'
-                  : 'text-gray-500 hover:text-zinc-900 hover:bg-gray-100'
+                  ? 'bg-white/80 text-blue-600 shadow-sm shadow-black/10 font-medium'
+                  : 'text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-white/50'
               }`}
             >
               <item.icon className="w-4 h-4 flex-shrink-0" strokeWidth={isActive ? 2 : 1.5} />
-              {!collapsed && <span className="font-mono tracking-wider text-xs">{item.label}</span>}
+              {!collapsed && <span>{item.label}</span>}
             </Link>
           );
         })}
       </nav>
 
-      {/* Bottom */}
-      <div className="px-3 py-5 border-t border-gray-100 space-y-1">
+      <div className="px-2 py-4 space-y-0.5 border-t border-white/30">
         <Link
           href="/"
           target="_blank"
           title={collapsed ? 'Voir la boutique' : undefined}
-          className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-500 hover:text-zinc-900 hover:bg-gray-100 transition-all duration-200 ${collapsed ? 'justify-center' : ''}`}
+          className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-white/50 transition-all duration-200 ${collapsed ? 'justify-center' : ''}`}
         >
           <Store className="w-4 h-4 flex-shrink-0" strokeWidth={1.5} />
-          {!collapsed && <span className="font-mono tracking-wider text-xs">Voir la boutique</span>}
+          {!collapsed && <span>Voir la boutique</span>}
         </Link>
         <button
           onClick={handleLogout}
           disabled={loggingOut}
           title={collapsed ? 'Déconnexion' : undefined}
-          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all duration-200 disabled:opacity-50 ${collapsed ? 'justify-center' : ''}`}
+          className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] text-[#6e6e73] hover:text-red-500 hover:bg-red-50/60 transition-all duration-200 disabled:opacity-50 ${collapsed ? 'justify-center' : ''}`}
         >
           <LogOut className="w-4 h-4 flex-shrink-0" strokeWidth={1.5} />
-          {!collapsed && <span className="font-mono tracking-wider text-xs">{loggingOut ? 'Déconnexion...' : 'Déconnexion'}</span>}
+          {!collapsed && <span>{loggingOut ? 'Déconnexion...' : 'Déconnexion'}</span>}
         </button>
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className={`hidden lg:flex w-full items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-mono tracking-wider text-gray-400 hover:text-gray-600 transition-all duration-200 ${collapsed ? 'justify-center' : ''}`}
+          className={`hidden lg:flex w-full items-center gap-3 px-3 py-2.5 rounded-xl text-[12px] text-[#6e6e73] hover:text-[#1d1d1f] hover:bg-white/50 transition-all duration-200 ${collapsed ? 'justify-center' : ''}`}
         >
           <ChevronLeft className={`w-4 h-4 flex-shrink-0 transition-transform duration-300 ${collapsed ? 'rotate-180' : ''}`} strokeWidth={1.5} />
-          {!collapsed && <span>Réduire le menu</span>}
+          {!collapsed && <span>Réduire</span>}
         </button>
       </div>
     </div>
   );
 
-  const sidebarWidth = collapsed ? 'lg:ml-[72px]' : 'lg:ml-64';
+  const sidebarWidth = collapsed ? 'lg:ml-[68px]' : 'lg:ml-60';
 
   return (
-    <div className="min-h-screen bg-gray-50 text-zinc-900 flex">
+    <div className="min-h-screen bg-gradient-to-br from-[#dce8ff] via-[#eeeaff] to-[#e4f0ff] text-[#1d1d1f] flex">
       {/* Desktop Sidebar */}
-      <aside className={`hidden lg:flex flex-col fixed inset-y-0 left-0 z-50 bg-white border-r border-gray-100 shadow-sm transition-all duration-300 ${collapsed ? 'w-[72px]' : 'w-64'}`}>
+      <aside className={`hidden lg:flex flex-col fixed inset-y-0 left-0 z-50 bg-white/40 backdrop-blur-3xl border-r border-white/60 transition-all duration-300 ${collapsed ? 'w-[68px]' : 'w-60'}`}>
         <SidebarContent />
       </aside>
 
       {/* Mobile Sidebar */}
       {mobileOpen && (
         <>
-          <div className="fixed inset-0 bg-black/40 z-40 lg:hidden" onClick={() => setMobileOpen(false)} />
-          <aside className="fixed inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-100 flex flex-col lg:hidden shadow-xl">
+          <div className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40 lg:hidden" onClick={() => setMobileOpen(false)} />
+          <aside className="fixed inset-y-0 left-0 z-50 w-60 bg-white/70 backdrop-blur-3xl border-r border-white/60 flex flex-col lg:hidden shadow-2xl">
             <div className="absolute top-4 right-4">
-              <button onClick={() => setMobileOpen(false)} className="text-gray-400 hover:text-zinc-900">
-                <X className="w-5 h-5" />
+              <button onClick={() => setMobileOpen(false)} className="text-[#6e6e73] hover:text-[#1d1d1f] w-7 h-7 flex items-center justify-center rounded-full bg-black/5">
+                <X className="w-4 h-4" />
               </button>
             </div>
             <SidebarContent />
@@ -127,36 +124,34 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
       {/* Main */}
       <div className={`flex-1 flex flex-col min-h-screen transition-all duration-300 ${sidebarWidth}`}>
         {/* Header */}
-        <header className="h-16 bg-white border-b border-gray-100 flex items-center px-6 gap-4 sticky top-0 z-30 shadow-sm">
-          <button onClick={() => setMobileOpen(true)} className="lg:hidden text-gray-400 hover:text-zinc-900 transition-colors">
+        <header className="h-14 bg-white/35 backdrop-blur-2xl border-b border-white/50 flex items-center px-5 gap-4 sticky top-0 z-30">
+          <button onClick={() => setMobileOpen(true)} className="lg:hidden text-[#6e6e73] hover:text-[#1d1d1f] transition-colors">
             <Menu className="w-5 h-5" />
           </button>
 
-          {/* Search */}
           <div className="flex-1 max-w-sm">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" strokeWidth={1.5} />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#aeaeb2]" strokeWidth={1.5} />
               <input
                 type="text"
                 placeholder="Rechercher..."
-                className="w-full bg-gray-50 border border-gray-200 text-zinc-900 text-sm pl-9 pr-4 py-2 rounded-lg focus:outline-none focus:border-gray-400 transition-colors placeholder:text-gray-400"
+                className="w-full bg-white/50 border border-white/60 text-[#1d1d1f] text-[13px] pl-9 pr-4 py-2 rounded-xl focus:outline-none focus:border-blue-400/50 focus:bg-white/70 transition-all placeholder:text-[#aeaeb2]"
               />
             </div>
           </div>
 
           <div className="flex-1" />
 
-          {/* Right */}
-          <div className="flex items-center gap-3">
-            <button className="relative p-2 text-gray-400 hover:text-zinc-900 transition-colors rounded-lg hover:bg-gray-100">
-              <Bell className="w-5 h-5" strokeWidth={1.5} />
+          <div className="flex items-center gap-2">
+            <button className="relative p-2 text-[#6e6e73] hover:text-[#1d1d1f] transition-colors rounded-xl hover:bg-white/60">
+              <Bell className="w-4 h-4" strokeWidth={1.5} />
             </button>
-            <div className="flex items-center gap-3 pl-3 border-l border-gray-100">
+            <div className="flex items-center gap-3 pl-2 border-l border-white/40">
               <div className="text-right hidden sm:block">
-                <p className="text-xs font-semibold text-zinc-900">Admin User</p>
-                <p className="text-[10px] text-gray-400">admin@zafar.ma</p>
+                <p className="text-[13px] font-medium text-[#1d1d1f]">Admin User</p>
+                <p className="text-[10px] text-[#6e6e73]">admin@zafar.ma</p>
               </div>
-              <div className="w-8 h-8 rounded-full bg-zinc-900 flex items-center justify-center flex-shrink-0">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center flex-shrink-0 shadow-md shadow-blue-500/30">
                 <span className="text-white text-xs font-bold">Z</span>
               </div>
             </div>
@@ -164,7 +159,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </header>
 
         {/* Content */}
-        <main className="flex-1 p-6 lg:p-8">
+        <main className="flex-1 p-5 lg:p-7">
           {children}
         </main>
       </div>
