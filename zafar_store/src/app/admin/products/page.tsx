@@ -10,7 +10,7 @@ interface Product {
   colors: string[]; sizes: string[]; best_seller: boolean;
 }
 
-const emptyForm = { slug: '', name: '', price: '', category: 'T-SHIRTS', images: [] as string[], description: '', colors: '', sizes: '', best_seller: false };
+const emptyForm = { slug: '', name: '', price: '', category: 'T-shirt Men', images: [] as string[], description: '', colors: '', sizes: '', best_seller: false };
 
 function generateSlug(name: string) {
   return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');

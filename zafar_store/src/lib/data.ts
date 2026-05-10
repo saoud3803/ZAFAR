@@ -1,4 +1,5 @@
 import { supabase } from './supabase';
+import { CATEGORY_MAP } from './categories';
 
 export interface Product {
   id: string;
@@ -86,6 +87,33 @@ export const getProductBySlug = async (slug: string): Promise<Product | null> =>
     category: data.category,
     inStock: true,
   };
+};
+
+export const getProductsByCategory = async (slug: string): Promise<Product[]> => {
+  const dbCategories = CATEGORY_MAP[slug.toLowerCase()];
+  if (!dbCategories?.length) return [];
+
+  const { data, error } = await supabase
+    .from('products')
+    .select('*')
+    .in('category', dbCategories)
+    .order('created_at', { ascending: false });
+
+  if (error || !data) return [];
+
+  return data.map(p => ({
+    id: p.id,
+    name: p.name,
+    price: p.price,
+    formattedPrice: `${p.price} MAD`,
+    description: p.description || '',
+    images: p.images || [],
+    colors: p.colors || [],
+    sizes: p.sizes || [],
+    best_seller: p.best_seller || false,
+    category: p.category,
+    inStock: true,
+  }));
 };
 
 export const getBestSellers = async (): Promise<Product[]> => {
