@@ -101,28 +101,30 @@ const Navbar = () => {
           isScrolled ? '-translate-y-full opacity-0' : 'translate-y-0 opacity-100'
         }`}
       >
-        <div suppressHydrationWarning className="max-w-[1440px] mx-auto px-8 lg:px-12 h-[72px] flex items-center justify-between">
-          
+        {/* ══════════════════════════════════════
+            DESKTOP NAV  (lg+) — DO NOT TOUCH
+        ══════════════════════════════════════ */}
+        <div suppressHydrationWarning className="hidden lg:flex max-w-[1440px] mx-auto px-12 h-[72px] items-center justify-between relative">
+
           {/* Navigation Links (Left) */}
-          <div className="hidden lg:flex items-center space-x-10 flex-1">
+          <div className="flex items-center space-x-10 flex-1">
             {navLinks.map((link) => {
               const isActive = pathname === link.href || (pathname.startsWith(link.href) && link.href !== '/collections');
               return (
-                <div 
+                <div
                   key={link.name}
                   className="relative h-[72px] flex items-center"
                   onMouseEnter={() => link.hasDropdown && setHoveredCategory(link.name)}
                   onMouseLeave={() => setHoveredCategory(null)}
                 >
-                  <Link 
+                  <Link
                     href={link.href}
                     className={`font-ui-mono tracking-[0.15em] uppercase text-[11px] transition-colors duration-500 relative group overflow-hidden py-2 ${
                       isActive ? 'text-black font-semibold' : 'text-zinc-800 hover:text-black font-medium'
                     }`}
                   >
                     {link.name}
-                    {/* Elegant underline animation */}
-                    <span 
+                    <span
                       className={`absolute bottom-0 left-0 w-full h-[1px] bg-black transform origin-left transition-transform duration-500 ease-[cubic-bezier(0.25,1,0.5,1)] ${
                         isActive ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
                       }`}
@@ -132,24 +134,24 @@ const Navbar = () => {
               );
             })}
           </div>
-          
+
           {/* Center Brand Logo */}
-          <div className="absolute left-1/2 transform -translate-x-1/2 flex justify-center">
-            <Link 
-              href="/" 
-              className="font-headline-lg text-[32px] md:text-[40px] font-medium tracking-[0.25em] text-black ml-[0.25em]" // ml offsets tracking for perfect centering
+          <div className="absolute left-1/2 -translate-x-1/2 flex justify-center">
+            <Link
+              href="/"
+              className="font-headline-lg text-[40px] font-medium tracking-[0.25em] text-black ml-[0.25em]"
               onClick={() => setHoveredCategory(null)}
             >
               ZAFAR
             </Link>
           </div>
-          
+
           {/* Trailing Icons (Right) */}
           <div className="flex items-center justify-end space-x-8 flex-1 text-black">
-            <button aria-label="search" className="hidden sm:block hover:text-zinc-600 transition-colors duration-500 group">
+            <button aria-label="search" className="hover:text-zinc-600 transition-colors duration-500 group">
               <Search strokeWidth={1.5} className="w-5 h-5 group-hover:scale-110 transition-transform duration-500" />
             </button>
-            <button aria-label="person" className="hidden sm:block hover:text-zinc-600 transition-colors duration-500 group">
+            <button aria-label="person" className="hover:text-zinc-600 transition-colors duration-500 group">
               <User strokeWidth={1.5} className="w-5 h-5 group-hover:scale-110 transition-transform duration-500" />
             </button>
             <Link href="/checkout" aria-label="shopping_bag" className="relative hover:text-zinc-600 transition-colors duration-500 group flex items-center">
@@ -160,13 +162,50 @@ const Navbar = () => {
                 </span>
               )}
             </Link>
-            
-            {/* Mobile Menu Toggle */}
-            <div className="lg:hidden flex items-center ml-2">
-              <button onClick={() => setIsMobileMenuOpen(true)} className="text-black">
-                <Menu strokeWidth={1.5} className="w-6 h-6" />
-              </button>
-            </div>
+          </div>
+        </div>
+
+        {/* ══════════════════════════════════════
+            MOBILE NAV  (< lg)
+            Layout: [≡]  [ZAFAR]  [🛍]
+        ══════════════════════════════════════ */}
+        <div suppressHydrationWarning className="lg:hidden grid grid-cols-3 items-center px-5 h-[64px]">
+
+          {/* Left — Hamburger */}
+          <div className="flex items-center">
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              aria-label="open menu"
+              className="text-black p-1 -ml-1"
+            >
+              <Menu strokeWidth={1.5} className="w-5 h-5" />
+            </button>
+          </div>
+
+          {/* Center — ZAFAR logo */}
+          <div className="flex justify-center">
+            <Link
+              href="/"
+              className="font-headline-lg text-[26px] font-medium tracking-[0.25em] text-black ml-[0.25em]"
+            >
+              ZAFAR
+            </Link>
+          </div>
+
+          {/* Right — Shopping bag */}
+          <div className="flex items-center justify-end">
+            <Link
+              href="/checkout"
+              aria-label="shopping_bag"
+              className="relative text-black p-1 -mr-1"
+            >
+              <ShoppingBag strokeWidth={1.5} className="w-5 h-5" />
+              {mounted && cartCount > 0 && (
+                <span className="absolute -top-0.5 -right-0.5 bg-black text-white text-[9px] font-ui-mono w-4 h-4 flex items-center justify-center rounded-full border border-[#FAFAFA]">
+                  {cartCount}
+                </span>
+              )}
+            </Link>
           </div>
         </div>
       </nav>
