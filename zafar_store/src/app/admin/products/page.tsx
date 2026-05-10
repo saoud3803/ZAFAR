@@ -1,8 +1,8 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
-import { Plus, Pencil, Trash2, X, Check, Loader2, Star, Upload } from 'lucide-react';
+import { Plus, Pencil, Trash2, X, Check, Loader2, Star, ImagePlus } from 'lucide-react';
 
 interface Product {
   id: string; slug: string; name: string; price: number;
@@ -10,7 +10,7 @@ interface Product {
   colors: string[]; sizes: string[]; best_seller: boolean;
 }
 
-const emptyForm = { slug: '', name: '', price: '', category: 'T-SHIRTS', images: '', description: '', colors: '', sizes: '', best_seller: false };
+const emptyForm = { slug: '', name: '', price: '', category: 'T-SHIRTS', images: [] as string[], description: '', colors: '', sizes: '', best_seller: false };
 
 function generateSlug(name: string) {
   return name.toLowerCase().trim().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
@@ -27,8 +27,10 @@ export default function AdminProductsPage() {
   const [form, setForm] = useState(emptyForm);
   const [saving, setSaving] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
-  const [uploading, setUploading] = useState(false);
+  const [uploadingCount, setUploadingCount] = useState(0);
+  const [dragOver, setDragOver] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const showToast = (message: string, type: 'success' | 'error' = 'success') => {
     setToast({ message, type });
@@ -51,7 +53,7 @@ export default function AdminProductsPage() {
       name: p.name || '',
       price: String(p.price || 0),
       category: p.category || 'T-SHIRTS',
-      images: (p.images || []).join(', '),
+      images: p.images || [],
       description: p.description || '',
       colors: (p.colors || []).join(', '),
       sizes: (p.sizes || []).join(', '),
@@ -62,19 +64,47 @@ export default function AdminProductsPage() {
 
   const handleNameChange = (name: string) => setForm(prev => ({ ...prev, name, slug: prev.slug && prev.slug !== generateSlug(prev.name) ? prev.slug : generateSlug(name) }));
 
-  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0]; if (!file) return;
-    setUploading(true);
-    const fileName = `products/${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
-    const { data, error } = await supabase.storage.from('website').upload(fileName, file, { upsert: true });
-    if (error) { showToast(`Upload error: ${error.message}`, 'error'); }
-    else { const { data: u } = supabase.storage.from('website').getPublicUrl(data.path); setForm(prev => ({ ...prev, images: prev.images ? `${prev.images}, ${u.publicUrl}` : u.publicUrl })); showToast('Image uploadée !'); }
-    setUploading(false); e.target.value = '';
+  const uploadFiles = useCallback(async (files: File[]) => {
+    if (!files.length) return;
+    setUploadingCount(prev => prev + files.length);
+    const results = await Promise.all(
+      files.map(async (file) => {
+        const ext = file.name.split('.').pop();
+        const fileName = `products/${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+        const { data, error } = await supabase.storage.from('website').upload(fileName, file, { upsert: true });
+        if (error) { showToast(`Erreur: ${error.message}`, 'error'); return null; }
+        const { data: u } = supabase.storage.from('website').getPublicUrl(data.path);
+        return u.publicUrl;
+      })
+    );
+    const urls = results.filter(Boolean) as string[];
+    if (urls.length) {
+      setForm(prev => ({ ...prev, images: [...prev.images, ...urls] }));
+      showToast(`${urls.length} image${urls.length > 1 ? 's' : ''} uploadée${urls.length > 1 ? 's' : ''} !`);
+    }
+    setUploadingCount(prev => prev - files.length);
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  }, []);
+
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    uploadFiles(files);
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setDragOver(false);
+    const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+    uploadFiles(files);
+  };
+
+  const removeImage = (url: string) => {
+    setForm(prev => ({ ...prev, images: prev.images.filter(u => u !== url) }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault(); setSaving(true);
-    const payload = { slug: form.slug.trim() || generateSlug(form.name), name: form.name.trim(), price: parseFloat(form.price), category: form.category, images: form.images.split(',').map(s => s.trim()).filter(Boolean), description: form.description.trim(), colors: form.colors.split(',').map(s => s.trim()).filter(Boolean), sizes: form.sizes.split(',').map(s => s.trim()).filter(Boolean), best_seller: form.best_seller };
+    const payload = { slug: form.slug.trim() || generateSlug(form.name), name: form.name.trim(), price: parseFloat(form.price), category: form.category, images: form.images, description: form.description.trim(), colors: form.colors.split(',').map(s => s.trim()).filter(Boolean), sizes: form.sizes.split(',').map(s => s.trim()).filter(Boolean), best_seller: form.best_seller };
     const { error } = editingId ? await supabase.from('products').update(payload).eq('id', editingId) : await supabase.from('products').insert(payload);
     if (error) showToast(`Erreur: ${error.message}`, 'error');
     else { showToast(editingId ? 'Produit mis à jour !' : 'Produit ajouté !'); setShowForm(false); fetchProducts(); }
@@ -206,18 +236,63 @@ export default function AdminProductsPage() {
               </div>
               <div>
                 <label className={lbl}>Images</label>
-                <div className="flex gap-2">
-                  <input className={`${inp} flex-1`} placeholder="https://..." value={form.images} onChange={e => setForm({...form, images: e.target.value})} />
-                  <label className="flex items-center gap-2 bg-white/60 hover:bg-white/80 border border-white/60 text-[#1d1d1f] text-[12px] font-medium px-3 py-2.5 rounded-xl cursor-pointer transition-all flex-shrink-0">
-                    {uploading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Upload className="w-4 h-4" />}
-                    {uploading ? '...' : 'Upload'}
-                    <input type="file" accept="image/*" onChange={handleImageUpload} className="hidden" />
-                  </label>
+                {/* Drop zone */}
+                <div
+                  onDragOver={e => { e.preventDefault(); setDragOver(true); }}
+                  onDragLeave={() => setDragOver(false)}
+                  onDrop={handleDrop}
+                  onClick={() => fileInputRef.current?.click()}
+                  className={`relative flex flex-col items-center justify-center gap-2 w-full rounded-2xl border-2 border-dashed py-7 cursor-pointer transition-all duration-200 select-none ${
+                    dragOver
+                      ? 'border-blue-400 bg-blue-50/60 scale-[1.01]'
+                      : 'border-white/60 bg-white/30 hover:border-blue-300 hover:bg-white/50'
+                  }`}
+                >
+                  {uploadingCount > 0 ? (
+                    <>
+                      <Loader2 className="w-6 h-6 text-blue-400 animate-spin" />
+                      <p className="text-[12px] text-[#6e6e73]">Upload en cours…</p>
+                    </>
+                  ) : (
+                    <>
+                      <div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center">
+                        <ImagePlus className="w-5 h-5 text-blue-400" strokeWidth={1.5} />
+                      </div>
+                      <div className="text-center">
+                        <p className="text-[13px] font-medium text-[#1d1d1f]">Glissez vos images ici</p>
+                        <p className="text-[11px] text-[#aeaeb2] mt-0.5">ou cliquez pour sélectionner — JPG, PNG, WEBP</p>
+                      </div>
+                    </>
+                  )}
+                  <input
+                    ref={fileInputRef}
+                    type="file"
+                    accept="image/*"
+                    multiple
+                    onChange={handleFileInputChange}
+                    className="hidden"
+                  />
                 </div>
-                {form.images && (
-                  <div className="flex gap-2 mt-2 overflow-x-auto">
-                    {form.images.split(',').map(u => u.trim()).filter(Boolean).map((url, i) => (
-                      <img key={i} src={url} alt="" className="w-14 h-18 object-cover rounded-xl flex-shrink-0 bg-black/5" onError={e => (e.currentTarget.style.display='none')} />
+
+                {/* Image preview grid */}
+                {form.images.length > 0 && (
+                  <div className="grid grid-cols-4 gap-2 mt-3">
+                    {form.images.map((url, i) => (
+                      <div key={url} className="relative group aspect-square rounded-xl overflow-hidden bg-black/5">
+                        <img src={url} alt="" className="w-full h-full object-cover" />
+                        {i === 0 && (
+                          <span className="absolute top-1 left-1 text-[9px] font-bold bg-blue-500 text-white px-1.5 py-0.5 rounded-md tracking-wide">
+                            COVER
+                          </span>
+                        )}
+                        <button
+                          type="button"
+                          onClick={() => removeImage(url)}
+                          className="absolute top-1 right-1 w-5 h-5 bg-red-500 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-md"
+                        >
+                          <X className="w-3 h-3" />
+                        </button>
+                      </div>
                     ))}
                   </div>
                 )}
